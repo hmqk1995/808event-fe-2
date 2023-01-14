@@ -11,10 +11,10 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
-const props = withDefaults(defineProps<{ date: Date }>(), {
+import { computed } from 'vue';
+const props = withDefaults(defineProps<{ date?: Date }>(), {
   date: () => new Date(),
-})
+});
 const weekMap = [
   'Sunday',
   'Monday',
@@ -23,7 +23,7 @@ const weekMap = [
   'Thursday',
   'Friday',
   'Saturday',
-]
+];
 const monthMap = [
   'Jan',
   'Feb',
@@ -37,10 +37,10 @@ const monthMap = [
   'Oct',
   'Nov',
   'Dec',
-]
-const month = computed(() => monthMap[props.date.getMonth()])
-const day = computed(() => weekMap[props.date.getDay()])
-const date = computed(() => props.date.getDate())
+];
+const month = computed(() => monthMap[props.date.getMonth()]);
+const day = computed(() => weekMap[props.date.getDay()]);
+const date = computed(() => props.date.getDate());
 </script>
 
 <style scoped lang="scss">
