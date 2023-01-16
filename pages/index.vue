@@ -8,6 +8,16 @@
 
 <script lang="ts" setup>
 import EventListCard from '@/components/events/EventListCard.vue';
+// query getEvents {
+//   events {
+//     data {
+//       id
+//       attributes {
+//         EventName
+//       }
+//     }
+//   }
+// }
 </script>
 
 <style lang="scss" scoped>

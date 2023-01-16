@@ -9,6 +9,10 @@ export default defineNuxtConfig({
       siteName,
     }
   },
+  modules: [
+    '@nuxtjs/strapi',
+    '@pinia/nuxt',
+  ],
   app: {
     head: {
       title: siteName,
@@ -26,6 +30,13 @@ export default defineNuxtConfig({
       tailwindcss: {},
       autoprefixer: {},
     },
+  },
+  strapi: {
+    url: process.env.STRAPI_URL || 'http://127.0.0.1:1337',
+    prefix: '/api',
+    version: 'v4',
+    cookie: {},
+    cookieName: 'strapi_jwt',
   },
   vite: {
     css: {

@@ -10,24 +10,18 @@
         <ui-grid-cell columns="8">
           <ui-card outlined class="p-6">
             <h3 :class="[$tt('headline3'), 'mb-4']">
-              The Hilton Hawaiian Village Fireworks Show!
+              {{ eventName }}
             </h3>
             <ui-list-divider></ui-list-divider>
             <div class="text-slate-400 mt-2 mb-2">
-              December 23, 2022 - January 29, 2023
+              <template v-if="isRepeatedEvent">Every {{ day }}</template>
+              <template v-else
+                >{{ startDateTime }} - {{ endDateTime }}</template
+              >
             </div>
             <ui-list-divider></ui-list-divider>
             <!-- <div>add to calendar</div> -->
-            <p :class="[$tt('body1'), 'mt-4']">
-              Aloha Friday means fireworks! Enjoy a free fireworks show every
-              Friday in Waikīkī at 7:45pm behind Hilton Hawaiian Village. The
-              show lasts approximately 3-5 minutes. Fireworks can be enjoyed
-              directly from the beach, anywhere from the Waikiki Shore building
-              adjacent to Fort DeRussy Beach Park, to the Duke Kahanamoku Lagoon
-              behind the Ilikai and Ilikai Marina condos. Or, enjoy the show
-              from the comfort of one of our many fabulous vacation rentals in
-              the area.
-            </p>
+            <p :class="[$tt('body1'), 'mt-4']" v-html="description" />
             <div class="text-center text-slate-400 mt-4 mb-4">
               ------ 🤙 ------
             </div>
@@ -67,21 +61,36 @@
         </ui-grid-cell>
       </ui-grid>
       <!-- <div class="flex items-center m-1">more detail</div>
-    <div class="flex items-center m-1">similar events</div> -->
+      <div class="flex items-center m-1">similar events</div> -->
+      <!-- <div>{{ attributes }}</div> -->
     </div>
   </NuxtLayout>
 </template>
 
 <script lang="ts" setup>
+import { storeToRefs } from 'pinia';
+import { useSingleEventStore } from '@/stores/events/singleEvent';
 import LocationMap from '@/components/common/LocationMap.vue';
 
 const config = useRuntimeConfig();
 const router = useRouter();
+const route = useRoute();
 const subTitle = 'The Hilton Hawaiian Village Fireworks Show!';
 
 useHead({
   title: `${subTitle} - ${config.public.siteName}`,
 });
+
+const singleEventStore = useSingleEventStore(route.params.id)();
+await singleEventStore.loadEvent();
+const {
+  eventName,
+  description,
+  isRepeatedEvent,
+  day,
+  startDateTime,
+  endDateTime,
+} = storeToRefs(singleEventStore);
 </script>
 
 <style lang="scss" scoped>
