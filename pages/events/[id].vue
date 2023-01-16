@@ -28,30 +28,27 @@
         </ui-card>
       </ui-grid-cell>
       <ui-grid-cell columns="4">
-        <ui-card outlined>
+        <ui-card outlined v-if="lat && lng">
           <LocationMap
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            :center="[21.30158242167935, -157.84973376013]"
-            :marker-lat-lng="[21.30158242167935, -157.84973376013]"
+            :center="[lat, lng]"
+            :marker-lat-lng="[lat, lng]"
             style="height: 300px"
           />
         </ui-card>
         <ui-card outlined class="mt-4 p-2">
           <div class="text-sm">
             <div class="flex items-center m-1">
-              <ui-icon size="18" class="mr-2">location_on</ui-icon> Blaisdell
-              Concert Hall, 777 Ward Ave Honolulu, HI 96814
+              <ui-icon size="18" class="mr-2">location_on</ui-icon>
+              {{ address }}
             </div>
             <div class="flex items-center m-1">
-              <ui-icon size="18" class="mr-2">phone</ui-icon> 808-768-5252
+              <ui-icon size="18" class="mr-2">phone</ui-icon>
+              {{ phone }}
             </div>
             <div class="flex items-center m-1">
               <ui-icon size="18" class="mr-2">account_circle</ui-icon>
-              Blaisdell Box Office
-            </div>
-            <div class="flex items-center m-1">
-              <ui-icon size="18" class="mr-2">account_balance</ui-icon>
-              Blaisdell Center
+              {{ pointOfContact }}
             </div>
           </div>
         </ui-card>
@@ -86,6 +83,11 @@ const {
   day,
   startDateTime,
   endDateTime,
+  address,
+  phone,
+  pointOfContact,
+  lat,
+  lng,
 } = storeToRefs(singleEventStore);
 </script>
 

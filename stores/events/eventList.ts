@@ -17,6 +17,9 @@ export const useEventListStore = defineStore(`event-list`, () => {
               Day
               StartDateTime
               EndDateTime
+              Address
+              Phone
+              PointOfContact
             }
           }
         }

@@ -25,19 +25,16 @@
         </div>
         <ui-list-divider class="mt-2 mb-2"></ui-list-divider>
         <div class="flex items-center m-1">
-          <ui-icon size="18" class="mr-2">location_on</ui-icon> Blaisdell
-          Concert Hall, 777 Ward Ave Honolulu, HI 96814
+          <ui-icon size="18" class="mr-2">location_on</ui-icon>
+          {{ address }}
         </div>
         <div class="flex items-center m-1">
-          <ui-icon size="18" class="mr-2">phone</ui-icon> 808-768-5252
+          <ui-icon size="18" class="mr-2">phone</ui-icon>
+          {{ phone }}
         </div>
         <div class="flex items-center m-1">
-          <ui-icon size="18" class="mr-2">account_circle</ui-icon> Blaisdell Box
-          Office
-        </div>
-        <div class="flex items-center m-1">
-          <ui-icon size="18" class="mr-2">account_balance</ui-icon> Blaisdell
-          Center
+          <ui-icon size="18" class="mr-2">account_circle</ui-icon>
+          {{ pointOfContact }}
         </div>
       </div>
     </NuxtLink>
@@ -56,6 +53,9 @@ const isRepeatedEvent = computed<boolean>(
 const day = computed(() => event?.attributes?.Day ?? '');
 const startDateTime = computed(() => event?.attributes?.StartDateTime ?? '');
 const endDateTime = computed(() => event?.attributes?.EndDateTime ?? '');
+const address = computed(() => event?.attributes?.Address);
+const phone = computed(() => event?.attributes?.Phone);
+const pointOfContact = computed(() => event?.attributes?.PointOfContact);
 </script>
 
 <style lang="scss" scoped>
