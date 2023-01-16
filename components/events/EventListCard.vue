@@ -1,7 +1,7 @@
 <template>
   <ui-card v-shadow="9" class="m-4 event-card">
     <NuxtLink :to="`/events/${id}`">
-      <ui-card-media class="bg-black">
+      <ui-card-media class="card-media-bg bg-black/75">
         <img
           alt="event card picture"
           src="/event-demo-pic.png"
@@ -62,5 +62,11 @@ const pointOfContact = computed(() => event?.attributes?.PointOfContact);
 .event-card {
   background-color: transparent;
   backdrop-filter: blur(5px) invert(80%) opacity(1);
+}
+.card-media-bg {
+  background-image: url(/_nuxt/polybg.png);
+  background-size: 100%;
+  background-blend-mode: multiply;
+  background-repeat: repeat-y;
 }
 </style>
