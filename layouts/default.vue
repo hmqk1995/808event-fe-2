@@ -4,7 +4,7 @@
 
     <div id="content-main" class="layout">
       <div class="w-full app-content">
-        <slot />
+        <slot></slot>
       </div>
     </div>
   </div>
