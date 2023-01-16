@@ -3,10 +3,12 @@
     <NuxtLink :to="`/events/${id}`">
       <ui-card-media class="card-media-bg bg-black/75">
         <img
+          v-if="coverPictureUrl"
           alt="event card picture"
-          src="/event-demo-pic.png"
+          :src="`${strapiEndpoint}${coverPictureUrl}`"
           class="object-contain w-full h-48"
         />
+        <div v-else class="w-full h-48"></div>
         <ui-card-media-content>
           <div
             class="headline absolute bottom-0 left-0 w-full bg-gradient-to-r from-cyan-500/95 to-blue-500/95 p-2"
@@ -15,7 +17,10 @@
               {{ eventName }}
             </h1>
           </div>
-          <CalendarIcon class="absolute -top-8 right-2 scale-75" />
+          <CalendarIcon
+            class="absolute -top-8 right-2 scale-75"
+            v-if="!isRepeatedEvent"
+          />
         </ui-card-media-content>
       </ui-card-media>
       <div class="p-2 text-white text-xs" :class="$tt('body2')">
@@ -24,15 +29,15 @@
           <template v-else>{{ startDateTime }} - {{ endDateTime }}</template>
         </div>
         <ui-list-divider class="mt-2 mb-2"></ui-list-divider>
-        <div class="flex items-center m-1">
+        <div class="flex items-center m-1" v-if="address">
           <ui-icon size="18" class="mr-2">location_on</ui-icon>
           {{ address }}
         </div>
-        <div class="flex items-center m-1">
+        <div class="flex items-center m-1" v-if="phone">
           <ui-icon size="18" class="mr-2">phone</ui-icon>
           {{ phone }}
         </div>
-        <div class="flex items-center m-1">
+        <div class="flex items-center m-1" v-if="pointOfContact">
           <ui-icon size="18" class="mr-2">account_circle</ui-icon>
           {{ pointOfContact }}
         </div>
@@ -42,7 +47,9 @@
 </template>
 
 <script lang="ts" setup>
+import { strapiEndpoint } from '@/const/const';
 import CalendarIcon from '@/components/common/CalendarIcon.vue';
+
 const { event } = defineProps<{ event: any }>();
 
 const id = computed(() => event?.id ?? '');
@@ -56,6 +63,9 @@ const endDateTime = computed(() => event?.attributes?.EndDateTime ?? '');
 const address = computed(() => event?.attributes?.Address);
 const phone = computed(() => event?.attributes?.Phone);
 const pointOfContact = computed(() => event?.attributes?.PointOfContact);
+const coverPictureUrl = computed(
+  () => event?.attributes?.CoverPicture?.data?.attributes?.url
+);
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite';
 
-const siteName = '808 Event - Hawaii - From Your Ohana';
+import { siteName, strapiEndpoint } from './const/const';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -32,7 +32,7 @@ export default defineNuxtConfig({
     },
   },
   strapi: {
-    url: process.env.STRAPI_URL || 'http://127.0.0.1:1337',
+    url: process.env.STRAPI_URL || strapiEndpoint,
     prefix: '/api',
     version: 'v4',
     cookie: {},

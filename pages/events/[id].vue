@@ -38,15 +38,15 @@
         </ui-card>
         <ui-card outlined class="mt-4 p-2">
           <div class="text-sm">
-            <div class="flex items-center m-1">
+            <div class="flex items-center m-1" v-if="address">
               <ui-icon size="18" class="mr-2">location_on</ui-icon>
               {{ address }}
             </div>
-            <div class="flex items-center m-1">
+            <div class="flex items-center m-1" v-if="phone">
               <ui-icon size="18" class="mr-2">phone</ui-icon>
               {{ phone }}
             </div>
-            <div class="flex items-center m-1">
+            <div class="flex items-center m-1" v-if="pointOfContact">
               <ui-icon size="18" class="mr-2">account_circle</ui-icon>
               {{ pointOfContact }}
             </div>

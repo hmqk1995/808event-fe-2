@@ -20,6 +20,13 @@ export const useEventListStore = defineStore(`event-list`, () => {
               Address
               Phone
               PointOfContact
+              CoverPicture {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
             }
           }
         }
