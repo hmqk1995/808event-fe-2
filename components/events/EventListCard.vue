@@ -18,11 +18,6 @@
                 {{ eventName }}
               </h1>
             </div>
-            <CalendarIcon
-              class="absolute -top-8 right-2 scale-75"
-              v-if="!isRepeatedEvent"
-              :date="new Date(event?.attributes?.StartDateTime)"
-            />
           </ui-card-media-content>
         </ui-card-media>
 
@@ -47,6 +42,11 @@
         </div>
       </NuxtLink>
     </ui-card-content>
+    <CalendarIcon
+      class="absolute -top-8 right-2 scale-75 calendar"
+      v-if="!isRepeatedEvent"
+      :date="new Date(event?.attributes?.StartDateTime)"
+    />
   </ui-card>
 </template>
 
@@ -87,5 +87,10 @@ const coverPictureUrl = computed(
   background-size: 100%;
   background-blend-mode: multiply;
   background-repeat: repeat-y;
+}
+
+.calendar {
+  right: 0;
+  top: -25px;
 }
 </style>
