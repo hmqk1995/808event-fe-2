@@ -21,6 +21,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.6",
     "balm-ui": "^10.13.4",
+    "dayjs": "^1.11.7",
     "pinia": "^2.0.29",
     "vue-disqus": "^5.1.0"
   },

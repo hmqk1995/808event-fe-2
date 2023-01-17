@@ -20,6 +20,7 @@
           <CalendarIcon
             class="absolute -top-8 right-2 scale-75"
             v-if="!isRepeatedEvent"
+            :date="new Date(event?.attributes?.StartDateTime)"
           />
         </ui-card-media-content>
       </ui-card-media>
@@ -47,6 +48,7 @@
 </template>
 
 <script lang="ts" setup>
+import dayjs from 'dayjs';
 import { strapiEndpoint } from '@/const/const';
 import CalendarIcon from '@/components/common/CalendarIcon.vue';
 
@@ -58,8 +60,12 @@ const isRepeatedEvent = computed<boolean>(
   () => event?.attributes?.RepeatedEvent ?? false
 );
 const day = computed(() => event?.attributes?.Day ?? '');
-const startDateTime = computed(() => event?.attributes?.StartDateTime ?? '');
-const endDateTime = computed(() => event?.attributes?.EndDateTime ?? '');
+const startDateTime = computed(() =>
+  dayjs(event?.attributes?.StartDateTime ?? '').format('MMMM D, YYYY h:mm A')
+);
+const endDateTime = computed(() =>
+  dayjs(event?.attributes?.EndDateTime ?? '').format('MMMM D, YYYY h:mm A')
+);
 const address = computed(() => event?.attributes?.Address);
 const phone = computed(() => event?.attributes?.Phone);
 const pointOfContact = computed(() => event?.attributes?.PointOfContact);

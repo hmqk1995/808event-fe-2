@@ -14,7 +14,10 @@
           <ui-list-divider></ui-list-divider>
           <div class="text-slate-400 mt-2 mb-2">
             <template v-if="isRepeatedEvent">Every {{ day }}</template>
-            <template v-else>{{ startDateTime }} - {{ endDateTime }}</template>
+            <template v-else
+              >{{ startDateTimeFormatted }} -
+              {{ endDateTimeFormatted }}</template
+            >
           </div>
           <ui-list-divider></ui-list-divider>
           <!-- <div>add to calendar</div> -->
@@ -28,7 +31,7 @@
         </ui-card>
       </ui-grid-cell>
       <ui-grid-cell columns="4">
-        <ui-card outlined v-if="lat && lng">
+        <ui-card outlined v-if="lat && lng" class="mb-4">
           <LocationMap
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             :center="[lat, lng]"
@@ -36,7 +39,7 @@
             style="height: 300px"
           />
         </ui-card>
-        <ui-card outlined class="mt-4 p-2">
+        <ui-card outlined class="mb-4 p-2">
           <div class="text-sm">
             <div class="flex items-center m-1" v-if="address">
               <ui-icon size="18" class="mr-2">location_on</ui-icon>
@@ -61,6 +64,7 @@
 </template>
 
 <script lang="ts" setup>
+import dayjs from 'dayjs';
 import { storeToRefs } from 'pinia';
 import { useSingleEventStore } from '@/stores/events/singleEvent';
 import LocationMap from '@/components/common/LocationMap.vue';
@@ -89,6 +93,13 @@ const {
   lat,
   lng,
 } = storeToRefs(singleEventStore);
+
+const startDateTimeFormatted = computed(() =>
+  dayjs(startDateTime.value).format('MMMM D, YYYY h:mm A')
+);
+const endDateTimeFormatted = computed(() =>
+  dayjs(endDateTime.value).format('MMMM D, YYYY h:mm A')
+);
 </script>
 
 <style lang="scss" scoped>
