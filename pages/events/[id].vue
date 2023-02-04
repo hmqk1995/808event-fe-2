@@ -2,7 +2,7 @@
   <section class="event-detail-container">
     <ui-grid>
       <ui-grid-cell columns="12">
-        <ui-button icon="navigate_before" unelevated @click="router.back()"
+        <ui-button icon="navigate_before" unelevated @click="navigateTo('/')"
           >back</ui-button
         >
       </ui-grid-cell>

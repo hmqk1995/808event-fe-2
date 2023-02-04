@@ -13,3 +13,9 @@
 <script lang="ts" setup>
 import TopAppBar from '@/components/layouts/TopAppBar.vue';
 </script>
+
+<style lang="scss">
+.mdc-drawer-scrim {
+  z-index: 1001;
+}
+</style>

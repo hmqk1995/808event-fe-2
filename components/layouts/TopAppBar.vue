@@ -7,7 +7,7 @@
     @nav="openDrawer = true"
     ><template #toolbar="{ toolbarItemClass }"></template
   ></ui-top-app-bar>
-  <ui-drawer v-model="openDrawer" type="modal" class="fixed">
+  <ui-drawer v-model="openDrawer" type="modal" class="fixed drawer">
     <ui-drawer-header>
       <ui-drawer-title>808 Event</ui-drawer-title>
     </ui-drawer-header>
@@ -55,5 +55,8 @@ const openDrawer = ref(false);
   background-image: url('/polybg.png');
   background-size: auto 100%;
   background-blend-mode: multiply;
+}
+.drawer {
+  z-index: 1002;
 }
 </style>
