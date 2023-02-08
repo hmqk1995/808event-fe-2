@@ -1,7 +1,7 @@
 <template>
   <ui-top-app-bar
     type="fixed"
-    title="808 Event - Hawaii - From Your Ohana"
+    :title="siteName"
     content-selector="#content-main"
     class="top-app-bar"
     @nav="openDrawer = true"
@@ -47,6 +47,7 @@
 </template>
 
 <script lang="ts" setup>
+import { siteName } from '@/const/const';
 const openDrawer = ref(false);
 </script>
 
