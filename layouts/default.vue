@@ -7,11 +7,14 @@
         <slot></slot>
       </div>
     </div>
+
+    <TermsDrawer />
   </div>
 </template>
 
 <script lang="ts" setup>
 import TopAppBar from '@/components/layouts/TopAppBar.vue';
+import TermsDrawer from '@/components/common/TermsDrawer.vue';
 </script>
 
 <style lang="scss">

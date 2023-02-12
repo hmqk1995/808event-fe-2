@@ -1,11 +1,13 @@
 <template>
-  <div class="about-container">
-    <div class="p-4">
-      <ui-card outlined>
-        <div class="p-4" v-html="content"></div>
-      </ui-card>
+  <NuxtLayout>
+    <div class="about-container">
+      <div class="p-4">
+        <ui-card outlined>
+          <div class="p-4" v-html="content"></div>
+        </ui-card>
+      </div>
     </div>
-  </div>
+  </NuxtLayout>
 </template>
 
 <script lang="ts" setup>

@@ -61,3 +61,8 @@ const openDrawer = ref(false);
   z-index: 1002;
 }
 </style>
+<style lang="scss">
+.mdc-top-app-bar.mdc-top-app-bar--fixed {
+  z-index: 1001;
+}
+</style>
