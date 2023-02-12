@@ -44,7 +44,11 @@
             <div class="text-sm">
               <div class="flex items-center m-1" v-if="address">
                 <ui-icon size="18" class="mr-2">location_on</ui-icon>
-                {{ address }}
+                <a
+                  :href="`https://maps.apple.com/maps?q=${address}`"
+                  target="_blank"
+                  >{{ address }}</a
+                >
               </div>
               <div class="flex items-center m-1" v-if="phone">
                 <ui-icon size="18" class="mr-2">phone</ui-icon>
