@@ -26,7 +26,7 @@
             <img
               v-if="coverPictureUrl"
               :alt="`event picture ${eventName}`"
-              :src="`${strapiEndpoint}${coverPictureUrl}`"
+              :src="`${coverPictureUrl}`"
               class="object-contain w-full h-48"
             />
             <div
@@ -81,7 +81,6 @@
 
 <script lang="ts" setup>
 import dayjs from 'dayjs';
-import { strapiEndpoint } from '@/const/const';
 import { storeToRefs } from 'pinia';
 import { useSingleEventStore } from '@/stores/events/singleEvent';
 import LocationMap from '@/components/common/LocationMap.vue';

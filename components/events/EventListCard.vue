@@ -6,7 +6,7 @@
           <img
             v-if="coverPictureUrl"
             alt="event card picture"
-            :src="`${strapiEndpoint}${coverPictureUrl}`"
+            :src="`${coverPictureUrl}`"
             class="object-contain w-full h-48"
           />
           <div v-else class="w-full h-48"></div>
@@ -55,7 +55,6 @@
 
 <script lang="ts" setup>
 import dayjs from 'dayjs';
-import { strapiEndpoint } from '@/const/const';
 import CalendarIcon from '@/components/common/CalendarIcon.vue';
 
 const { event } = defineProps<{ event: any }>();
