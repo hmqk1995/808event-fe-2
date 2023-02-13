@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import dayjs from 'dayjs';
 
 export const useEventListStore = defineStore(`event-list`, () => {
   const graphql = useStrapiGraphQL();
@@ -7,34 +8,44 @@ export const useEventListStore = defineStore(`event-list`, () => {
 
   let data = ref({});
 
-  async function loadEvents() {
+  async function loadEvents([dateStart, dateEnd] = [
+    dayjs(),
+    dayjs().add(1, 'month'),
+  ]) {
     loading.value = true;
     try {
       data.value = await graphql(`
-        query getEvents {
-          events {
-            data {
-              id
-              attributes {
-                EventName
-                RepeatedEvent
-                Day
-                StartDateTime
-                EndDateTime
-                Address
-                Phone
-                PointOfContact
-                CoverPicture {
-                  data {
-                    attributes {
-                      url
-                    }
+      query getEvents {
+        events (
+          filters: {
+            StartDateTime: {
+              gt: "${dayjs(dateStart).format('YYYY-MM-DDTHH:mm:ssZ')}",
+              lt: "${dayjs(dateEnd).format('YYYY-MM-DDTHH:mm:ssZ')}",
+            }
+          }
+        ) {
+          data {
+            id
+            attributes {
+              EventName
+              RepeatedEvent
+              Day
+              StartDateTime
+              EndDateTime
+              Address
+              Phone
+              PointOfContact
+              CoverPicture {
+                data {
+                  attributes {
+                    url
                   }
                 }
               }
             }
           }
         }
+      }
       `);
     } catch (error) {
       console.log(error);

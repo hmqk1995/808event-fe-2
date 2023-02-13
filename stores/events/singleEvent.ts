@@ -23,6 +23,13 @@ export const useSingleEventStore = (eventId : string) => defineStore(`event-${ev
               PointOfContact
               Lat
               Lng
+              CoverPicture {
+                data {
+                  attributes {
+                    url
+                  }
+                }
+              }
             }
           }
         }
@@ -41,6 +48,7 @@ export const useSingleEventStore = (eventId : string) => defineStore(`event-${ev
   const pointOfContact = computed(() => attributes.value.PointOfContact);
   const lat = computed(() => attributes.value.Lat);
   const lng = computed(() => attributes.value.Lng);
+  const coverPictureUrl = computed(() => attributes.value.CoverPicture?.data?.attributes?.url);
 
   return {
     /** actions */
@@ -57,5 +65,6 @@ export const useSingleEventStore = (eventId : string) => defineStore(`event-${ev
     pointOfContact,
     lat,
     lng,
+    coverPictureUrl,
   }
 });

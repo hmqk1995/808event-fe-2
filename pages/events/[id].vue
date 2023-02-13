@@ -22,7 +22,16 @@
             </div>
             <ui-list-divider></ui-list-divider>
             <!-- <div>add to calendar</div> -->
-            <p :class="[$tt('body1'), 'mt-4']" v-html="description" />
+            <img
+              v-if="coverPictureUrl"
+              :alt="`event picture ${eventName}`"
+              :src="`${strapiEndpoint}${coverPictureUrl}`"
+              class="object-contain w-full h-48"
+            />
+            <div
+              :class="[$tt('body1'), 'mt-4', 'singleevent-content']"
+              v-html="description"
+            />
             <div class="text-center text-slate-400 mt-4 mb-4">
               ------ 🤙 ------
             </div>
@@ -71,6 +80,7 @@
 
 <script lang="ts" setup>
 import dayjs from 'dayjs';
+import { strapiEndpoint } from '@/const/const';
 import { storeToRefs } from 'pinia';
 import { useSingleEventStore } from '@/stores/events/singleEvent';
 import LocationMap from '@/components/common/LocationMap.vue';
@@ -78,11 +88,6 @@ import LocationMap from '@/components/common/LocationMap.vue';
 const config = useRuntimeConfig();
 const router = useRouter();
 const route = useRoute();
-const subTitle = 'The Hilton Hawaiian Village Fireworks Show!';
-
-useHead({
-  title: `${subTitle} - ${config.public.siteName}`,
-});
 
 const singleEventStore = useSingleEventStore(route.params.id)();
 await singleEventStore.loadEvent();
@@ -98,7 +103,12 @@ const {
   pointOfContact,
   lat,
   lng,
+  coverPictureUrl,
 } = storeToRefs(singleEventStore);
+
+useHead({
+  title: `${eventName.value} - ${config.public.siteName}`,
+});
 
 const startDateTimeFormatted = computed(() =>
   dayjs(startDateTime.value).format('MMMM D, YYYY h:mm A')
@@ -111,5 +121,12 @@ const endDateTimeFormatted = computed(() =>
 <style lang="scss" scoped>
 .event-detail-container::before {
   @include flower-background;
+}
+</style>
+<style lang="scss">
+.singleevent-content {
+  p {
+    margin-bottom: 1.25rem;
+  }
 }
 </style>
