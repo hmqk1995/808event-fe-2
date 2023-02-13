@@ -11,6 +11,7 @@
     <TermsDrawer />
 
     <GoogleAnalytics />
+    <GoogleAdSense />
   </div>
 </template>
 
@@ -18,6 +19,7 @@
 import TopAppBar from '@/components/layouts/TopAppBar.vue';
 import TermsDrawer from '@/components/common/TermsDrawer.vue';
 import GoogleAnalytics from '@/components/common/GoogleAnalytics.vue';
+import GoogleAdSense from '@/components/common/GoogleAdSense.vue';
 </script>
 
 <style lang="scss">
