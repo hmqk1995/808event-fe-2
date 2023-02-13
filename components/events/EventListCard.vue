@@ -24,7 +24,10 @@
         <div class="p-2 text-white text-xs" :class="$tt('body2')">
           <div>
             <template v-if="isRepeatedEvent">Every {{ day }}</template>
-            <template v-else>{{ startDateTime }} - {{ endDateTime }}</template>
+            <template v-else-if="hasEndDateTime"
+              >{{ startDateTime }} - {{ endDateTime }}</template
+            >
+            <template v-else>{{ startDateTime }}</template>
           </div>
           <ui-list-divider class="mt-2 mb-2"></ui-list-divider>
           <div class="flex items-center m-1" v-if="address">
@@ -66,6 +69,7 @@ const day = computed(() => event?.attributes?.Day ?? '');
 const startDateTime = computed(() =>
   dayjs(event?.attributes?.StartDateTime ?? '').format('MMMM D, YYYY h:mm A')
 );
+const hasEndDateTime = computed(() => event?.attributes?.EndDateTime ?? '');
 const endDateTime = computed(() =>
   dayjs(event?.attributes?.EndDateTime ?? '').format('MMMM D, YYYY h:mm A')
 );

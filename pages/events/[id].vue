@@ -15,10 +15,11 @@
             <ui-list-divider></ui-list-divider>
             <div class="text-slate-400 mt-2 mb-2">
               <template v-if="isRepeatedEvent">Every {{ day }}</template>
-              <template v-else
+              <template v-else-if="endDateTime"
                 >{{ startDateTimeFormatted }} -
                 {{ endDateTimeFormatted }}</template
               >
+              <template v-else>{{ startDateTimeFormatted }}</template>
             </div>
             <ui-list-divider></ui-list-divider>
             <!-- <div>add to calendar</div> -->

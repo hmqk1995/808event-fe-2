@@ -12,7 +12,7 @@
           v-else
           v-for="(event, index) in events"
           :event="event"
-          :key="index"
+          :key="`${event?.attributes?.EventName ?? ''}${index}`"
         />
       </div>
     </div>
