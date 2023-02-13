@@ -22,7 +22,8 @@ export const useEventListStore = defineStore(`event-list`, () => {
               gt: "${dayjs(dateStart).format('YYYY-MM-DDTHH:mm:ssZ')}",
               lt: "${dayjs(dateEnd).format('YYYY-MM-DDTHH:mm:ssZ')}",
             }
-          }
+          },
+          sort: "StartDateTime:asc",
         ) {
           data {
             id
