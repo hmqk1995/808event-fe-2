@@ -23,6 +23,9 @@ export const useEventListStore = defineStore(`event-list`, () => {
               lt: "${dayjs(dateEnd).format('YYYY-MM-DDTHH:mm:ssZ')}",
             }
           },
+          pagination: {
+            limit: 100,
+          },
           sort: "StartDateTime:asc",
         ) {
           data {

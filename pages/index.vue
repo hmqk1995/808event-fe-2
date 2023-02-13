@@ -24,9 +24,10 @@ import EventFilter from '@/components/events/EventFilter.vue';
 import EventListCard from '@/components/events/EventListCard.vue';
 import { useEventListStore } from '@/stores/events/eventList';
 import { storeToRefs } from 'pinia';
+import dayjs from 'dayjs';
 
 const eventListStore = useEventListStore();
-eventListStore.loadEvents();
+eventListStore.loadEvents([dayjs(), dayjs().add(2, 'month')]);
 const { events, loading } = storeToRefs(eventListStore);
 </script>
 
