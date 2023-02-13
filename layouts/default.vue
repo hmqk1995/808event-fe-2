@@ -9,12 +9,15 @@
     </div>
 
     <TermsDrawer />
+
+    <GoogleAnalytics />
   </div>
 </template>
 
 <script lang="ts" setup>
 import TopAppBar from '@/components/layouts/TopAppBar.vue';
 import TermsDrawer from '@/components/common/TermsDrawer.vue';
+import GoogleAnalytics from '@/components/common/GoogleAnalytics.vue';
 </script>
 
 <style lang="scss">
