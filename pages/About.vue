@@ -12,7 +12,7 @@
             </p>
             <p class="flex items-center">
               <ui-icon size="18" class="mr-2">email</ui-icon>
-              <a href="mailto:upport@808event.com">support@808event.com</a>
+              <a href="mailto:support@808event.com">support@808event.com</a>
             </p>
           </div>
         </ui-card>
