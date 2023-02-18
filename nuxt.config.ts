@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     },
   },
   strapi: {
-    url: process.env.STRAPI_URL || strapiEndpoint,
+    url: process?.env?.STRAPI_URL || strapiEndpoint,
     prefix: '/api',
     version: 'v4',
     cookie: {},
@@ -48,6 +48,14 @@ export default defineNuxtConfig({
           additionalData: '@import "@/assets/scss/lib.scss";',
         },
       },
+    },
+    server: {
+      proxy: {
+        '/graphql': {
+          target: 'https://api.808event.com/graphql',
+          ws: true,
+        },
+      }
     },
   },
   // https://github.com/balmjs/balm-ui/issues/121

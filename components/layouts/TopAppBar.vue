@@ -40,6 +40,16 @@
           </ui-item-first-content>
           <ui-item-text-content>About</ui-item-text-content>
         </li>
+        <li
+          @click="async () => await navigateTo('/publish')"
+          class="mdc-deprecated-list-item mdc-ripple-upgraded"
+        >
+          <span class="mdc-deprecated-list-item__ripple"></span>
+          <ui-item-first-content>
+            <ui-icon ui-icon class="mr-2">post_add</ui-icon>
+          </ui-item-first-content>
+          <ui-item-text-content>Post Your Event</ui-item-text-content>
+        </li>
         <ui-list-divider></ui-list-divider>
       </ui-list>
     </ui-drawer-content>
