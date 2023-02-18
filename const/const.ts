@@ -1,4 +1,4 @@
-export const strapiEndpoint = process?.env?.NUXT_STRAPI_ENDPOINT || 'https://api.808event.com';
+export const strapiEndpoint = 'https://api.808event.com';
 export const siteName = '808 Event - Your One-Stop Destination for Fun and Excitement on Oahu Island, Hawaii!';
 
 // local storage keys

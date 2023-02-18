@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     },
   },
   strapi: {
-    url: process?.env?.STRAPI_URL || strapiEndpoint,
+    url: strapiEndpoint,
     prefix: '/api',
     version: 'v4',
     cookie: {},
@@ -53,7 +53,7 @@ export default defineNuxtConfig({
       proxy: {
         '/graphql': {
           target: 'https://api.808event.com/graphql',
-          ws: true,
+          ws: false,
         },
       }
     },
