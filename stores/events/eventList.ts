@@ -14,41 +14,30 @@ export const useEventListStore = defineStore(`event-list`, () => {
     loading.value = true;
     try {
       data.value = await graphql(`
-      query getEvents {
-        events (
-          // filters: {
-          //   StartDateTime: {
-          //     gt: "${dayjs(dateStart).format("YYYY-MM-DDTHH:mm:ssZ")}",
-          //     lt: "${dayjs(dateEnd).format("YYYY-MM-DDTHH:mm:ssZ")}",
-          //   }
-          // },
-          pagination: {
-            limit: 100,
-          },
-          sort: "StartDateTime:asc",
-        ) {
-          data {
-            id
-            attributes {
-              EventName
-              RepeatedEvent
-              Day
-              StartDateTime
-              EndDateTime
-              Address
-              Phone
-              PointOfContact
-              CoverPicture {
-                data {
-                  attributes {
-                    url
+        query getEvents {
+          events(pagination: { limit: 100 }, sort: "StartDateTime:asc") {
+            data {
+              id
+              attributes {
+                EventName
+                RepeatedEvent
+                Day
+                StartDateTime
+                EndDateTime
+                Address
+                Phone
+                PointOfContact
+                CoverPicture {
+                  data {
+                    attributes {
+                      url
+                    }
                   }
                 }
               }
             }
           }
         }
-      }
       `);
     } catch (error) {
       console.log(error);
